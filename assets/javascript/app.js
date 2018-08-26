@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 var counter = 60;
 var timer = $("#timer");
+var score = 0;
 
 function setup() {
     timer.text(counter);
@@ -40,6 +41,23 @@ function timeConverter(t) {
 
     return minutes + ":" + seconds;
   }
+  
+  var value = $(".answer").attr("value");
+
+function points() {
+    if (value === "true") {
+        score++;
+        console.log(score);
+    }
+
+    if (score > 4){
+        alert("You Win!");
+    }
+    else if (score < 4){
+        alert("What kind of fan are you?");
+    }
+}
+points();
   function stop() {
 if (timer === "00:00") {
 // DONE: Use clearInterval to stop the count here and set the clock to not be running.
