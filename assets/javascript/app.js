@@ -8,6 +8,7 @@ function setup() {
     timer.text(counter);
     setInterval(timeIt, 1000);
     $("#timer").text("01:00");
+    clockRunning = true;
 }
 setup();
 function timeIt() { 
@@ -42,28 +43,35 @@ function timeConverter(t) {
     return minutes + ":" + seconds;
   }
   
-  var value = $(".answer").attr("value");
-  $("button").on("click", function(points) {
+ $("button").on("click", function() {
+      var value = $(".answer").attr("value");
+  
 function points() {
     if (value === "true") {
         score++;
         console.log(score);
     }
 
-    if (score > 4){
+    if (score >= 4){
         alert("You Win!");
     }
     else if (score < 4){
         alert("What kind of fan are you?");
     }
-}
-points();
-  function stop() {
-if (timer === "00:00") {
-// DONE: Use clearInterval to stop the count here and set the clock to not be running.
-    clearInterval(intervalId);
-    clockRunning = false;
-    stop(); 
-        }
-    }   
+    }
+    points();
 });
+
+function stop() {
+if (counter === 0) {
+// DONE: Use clearInterval to stop the count here and set the clock to not be running.
+    clearInterval(timeIt);
+    clockRunning = false;
+    alert("Out of time!");
+        }
+    stop(); 
+    } 
+
+
+});
+
