@@ -43,7 +43,7 @@ function timeConverter(t) {
   }
   
   var value = $(".answer").attr("value");
-
+  $("button").on("click", function(points) {
 function points() {
     if (value === "true") {
         score++;
